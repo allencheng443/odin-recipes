@@ -1,0 +1,271 @@
+/* Basic */
+
+:root {
+  /* Colors */
+  --color-accent: #e25931;
+  --color-red: rgb(240, 82, 48);
+  --color-red-30: rgba(240, 82, 48, 0.3);
+  --color-green: rgb(164, 208, 55);
+  --color-green-30: rgba(164, 208, 55, 0.3);
+  --color-blue: rgb(55, 180, 208);
+  --color-blue-30: rgba(55, 180, 208, 0.3);
+  --color-yellow: #fecd35;
+  --color-yellow-30: #fecd3550;
+  --color-black: #212121;
+  --color-black-30: #21212150;
+  --color-darkgray: #15171a;
+  --color-midgray: #738a94;
+  --color-lightgray: #f1f1f1;
+  --color-secondary-text: #979797;
+  --color-border: #e1e1e1;
+  --color-wash: #e5eff5;
+
+  --layout-gap: calc(8px + 1.5625vw);
+
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: calc(15px + 0.390625vw);
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+image {
+  display: block;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* Layout */
+
+/* Mobile */
+
+.container {
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
+.wrapper {
+  /* max-width: 1200px; */
+  margin-left: auto;
+  margin-right: auto;
+  padding: var(--layout-gap);
+}
+
+.header {
+  min-height: 30vh;
+}
+
+.header h1 {
+  color: #fff;
+}
+
+article > section > h2 {
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+/* index */
+
+/* header */
+
+.header.home {
+  background-image: url(./images/cover.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.header.home > .wrapper {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.header.home > .wrapper > h1 {
+  text-transform: uppercase;
+  flex: 1;
+  text-align: center;
+  backdrop-filter: blur(5px);
+}
+
+.back {
+  position: fixed;
+  padding: 1rem;
+  top: 2rem;
+  right: 0;
+  background-color: var(--color-accent);
+  opacity: 0.8;
+  border-radius: 100px 0 0 100px;
+  color: #fff;
+  transition: all 0.3s ease-out;
+  font-size: 1.2rem;
+}
+
+.back:hover {
+  opacity: 1;
+  transition: all 0.3s ease-out;
+}
+
+/* main */
+
+/* Recipes Section */
+
+.recipes > .wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--layout-gap);
+}
+
+.recipe-card {
+  --bg-overlay: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+  aspect-ratio: 1.5;
+  background-image: var(--bg-overlay), var(--bg-img);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: end;
+  padding: 2rem;
+  transition: all 1s ease-out;
+}
+
+.recipe-card:hover {
+  --bg-overlay: none;
+}
+
+.recipe-card:nth-child(1) {
+  --bg-img: url(./images/grilled-corn.webp);
+}
+
+.recipe-card:nth-child(2) {
+  --bg-img: url(./images/grilled-chicken.webp);
+}
+
+.recipe-card:nth-child(3) {
+  --bg-img: url(./images/peach-bars.webp);
+}
+
+.recipe-card > p {
+  color: #fff;
+  font-weight: 700;
+}
+
+/* footer */
+
+footer {
+  background-color: #e25931;
+}
+
+footer > .wrapper {
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+footer > .wrapper > p {
+  color: #fff;
+  font-size: 1.2rem;
+}
+
+/* Recipe Page */
+
+/* Recipe Page Header */
+.header.recipe {
+  background-image: var(--bg-img);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.header.recipe > .wrapper {
+  height: 100%;
+  display: flex;
+  align-items: end;
+}
+
+.header.grilled-corn {
+  --bg-img: url(./images/grilled-corn.webp);
+}
+
+.header.peach-bars {
+  --bg-img: url(./images/peach-bars.webp);
+}
+
+.header.grilled-chicken {
+  --bg-img: url(./images/grilled-chicken.webp);
+}
+
+/* Recipe Page Main */
+
+/* Recipe Content */
+
+.recipe-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.ingredients-card-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+}
+
+.ingredients-card > h3 {
+  margin-bottom: 1rem;
+}
+
+.ingredients-card > ul > li::before {
+  content: '✅';
+  margin-right: 0.5rem;
+}
+
+.ingredients-card > ul > li + li {
+  margin-top: 0.5rem;
+}
+
+/* Recipe Steps Section */
+
+.steps-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+}
+
+.steps-card {
+  border: 3px solid lightcoral;
+  border-radius: 1rem;
+}
+
+.steps-card h3 {
+  color: rgba(240, 128, 128, 1);
+  background-color: rgba(240, 128, 128, .3);
+  padding: 1rem;
+}
+
+.steps-card p {
+  padding: 1rem;
+}
